@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "blog"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = {extras = ["all"], version = "^0.115.6"}
+uvicorn = "^0.34.0"
+pydantic = "^2.10.4"
+pydantic-settings = "^2.7.1"
+aiohttp = "^3.11.11"
+sqlalchemy = "^2.0.36"
+psycopg2 = "^2.9.10"
+asyncpg = "^0.30.0"
+passlib = "^1.7.4"
+pyjwt = {extras = ["crypto"], version = "^2.10.1"}
+python-multipart = "^0.0.20"
+py-fastapi-logging = "^0.5.2"
+loguru = "^0.7.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
