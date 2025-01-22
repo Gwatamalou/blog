@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from config import logger
 
 from src.repositories import db, Base
-from src.routing import router as article_router
+from src.routing import router
 
 
 @logger.catch
@@ -18,7 +18,7 @@ async def lifespan(app: FastAPI):
     yield
 
 app = FastAPI(lifespan=lifespan)
-app.include_router(article_router)
+app.include_router(router)
 
 
 

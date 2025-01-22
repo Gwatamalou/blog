@@ -33,5 +33,6 @@ class Settings(BaseSettings):
     auth_jwt: AuthJWT = AuthJWT()
 
 
+
 auth_jwt = AuthJWT()
 settings = Settings()

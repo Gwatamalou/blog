@@ -15,11 +15,13 @@ aiohttp = "^3.11.11"
 sqlalchemy = "^2.0.36"
 psycopg2 = "^2.9.10"
 asyncpg = "^0.30.0"
-passlib = "^1.7.4"
+passlib = {extras = ["bcrypt"], version = "^1.7.4"}
 pyjwt = {extras = ["crypto"], version = "^2.10.1"}
 python-multipart = "^0.0.20"
 py-fastapi-logging = "^0.5.2"
 loguru = "^0.7.3"
+cryptography = "^44.0.0"
+bcrypt = "^4.2.1"
 
 
 [build-system]
