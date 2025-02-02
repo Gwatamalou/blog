@@ -11,9 +11,7 @@ class UserService:
 
 
     async def get_user(self, username: str, session: AsyncSession) -> UserOut:
-        user = await self.repository.get_user(username=username, session=session)
-        return user
+        return await self.repository.get_user(username=username, session=session)
 
     async def get_users(self, session: AsyncSession) -> list[UserOut]:
-        users =  await self.repository.get_users(session=session)
-        return users
+        return await self.repository.get_users(session=session)

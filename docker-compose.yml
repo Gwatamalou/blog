@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: fastapi_blog
+    environment:
+      - DB_LOGIN=postgres
+      - DB_PASSWORD=aaaa
+      - DB_NAME=blog
+      - DB_HOST=db
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+    restart: always
+    networks:
+      - blog_network
+
+  db:
+    image: postgres:13
+    container_name: postgres_blog
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: aaaa
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: always
+    networks:
+      - blog_network
+
+volumes:
+  postgres_data:
+
+networks:
+  blog_network:
+    driver: bridge

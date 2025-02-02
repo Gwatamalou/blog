@@ -16,7 +16,7 @@ logger.add(
 )
 
 class DbSettings(BaseModel):
-    url: str = f"postgresql+asyncpg://{os.getenv("DB_LOGIN")}:{os.getenv("DB_PASSWORD")}@localhost:5432/blog"
+    url: str = f"postgresql+asyncpg://{os.getenv("DB_LOGIN")}:{os.getenv("DB_PASSWORD")}@{os.getenv("DB_HOST")}:5432/{os.getenv('DB_NAME')}"
     echo: bool = True
 
 

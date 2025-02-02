@@ -7,11 +7,12 @@ __all__ = [
     "AuthenticationRepository",
     "ArticleRepository",
     "UserRepository",
+    "Article"
 ]
 
 
 from .db import Database, db
-from .model import Base, User, Refresh
+from .model import Base, User, Refresh, Article
 from .sicrets import AuthenticationRepository
 from .articles import ArticleRepository
 from .users import UserRepository

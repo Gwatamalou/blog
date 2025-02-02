@@ -3,7 +3,7 @@ from sqlalchemy.orm import DeclarativeBase, declared_attr, Mapped, mapped_column
 
 from src.schemas import AccessLevel
 
-from uuid import UUID, uuid4
+from uuid import uuid4, UUID
 from datetime import datetime
 
 
@@ -32,7 +32,7 @@ class Article(Base):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True, unique=True)
     title: Mapped[str] = mapped_column(String(100), nullable=False)
     text: Mapped[str] = mapped_column(String(10000), nullable=False)
-    author_id: Mapped[UUID] = mapped_column(ForeignKey('users.uuid'), nullable=False)
+    author_id: Mapped[UUID] = mapped_column(ForeignKey('users.uuid'), nullable=True)
     rating: Mapped[float] = mapped_column(Float, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.now(), nullable=False)
     updated_at: Mapped[datetime] = mapped_column(DateTime, nullable=True)

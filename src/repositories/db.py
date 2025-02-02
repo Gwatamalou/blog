@@ -13,6 +13,7 @@ class Database:
             autocommit=False,
         )
 
+
     async def session_dependency(self) -> AsyncSession:
         async with self.session_factory() as session:
             yield session

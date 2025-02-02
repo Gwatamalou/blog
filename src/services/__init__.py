@@ -1,19 +1,20 @@
 __all__ = [
-    "get_current_user",
-    "create_user",
-    "get_users",
-    "get_user",
     "AuthenticationService",
     "ArticleService",
     "UserService",
+    "AuthorizationService",
+    "RegistrationService",
     "authorization",
+    "TokenService"
 ]
 
 
 from .auth import (
-    get_current_user,
     AuthenticationService,
-    authorization
+    AuthorizationService,
+    RegistrationService,
+    authorization,
+    TokenService,
 )
 
 from .article import (
@@ -22,9 +23,3 @@ from .article import (
 
 
 from .users import UserService
-
-from .user import (
-    create_user,
-    get_users,
-    get_user,
-)

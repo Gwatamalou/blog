@@ -1,5 +1,4 @@
 from typing import Annotated
-
 from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, Field, EmailStr
@@ -32,3 +31,16 @@ class UserOut(UserBase):
     role: Annotated[AccessLevel, Field(default=AccessLevel.user)]
     created_at: datetime
     deleted_at: datetime | None
+
+
+class UserAll(UserBase):
+    model_config = ConfigDict(
+        from_attributes=True,
+    )
+
+    password_hash: Annotated[str, Field(alias="password_hash")]
+    uuid: Annotated[UUID, Field(default_factory=uuid4)]
+    role: Annotated[AccessLevel, Field(default=AccessLevel.user)]
+    created_at: datetime
+    deleted_at: datetime | None
+

@@ -1,9 +1,8 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from repositories import db
+from src.repositories import db
 from src.repositories import ArticleRepository, AuthenticationRepository, UserRepository
-from src.services import ArticleService, AuthenticationService, UserService
-
+from src.services import ArticleService, AuthenticationService, UserService, RegistrationService, TokenService
 
 
 async def get_session() -> AsyncSession:
@@ -28,3 +27,13 @@ authentication_repository = AuthenticationRepository()
 authentication_service = AuthenticationService(authentication_repository)
 async def get_authentication_service() -> AuthenticationService:
     return authentication_service
+
+
+registration_service = RegistrationService(authentication_repository)
+async def get_registration_service() -> RegistrationService:
+    return registration_service
+
+
+token_service = TokenService()
+async def get_token_service() -> TokenService:
+    return token_service

@@ -27,4 +27,4 @@ class Article(ArticleBase):
 
 
 class ArticleUpdate(Article):
-    ...
+    updated_at: datetime
