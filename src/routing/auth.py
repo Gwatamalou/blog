@@ -18,6 +18,7 @@ async def auth(user_data: OAuth2PasswordRequestForm = Depends(),
                authentication_service = Depends(get_authentication_service),
                session: AsyncSession = Depends(get_session)
                ):
+        """Выполняет аутентификацию пользователя и возвращает токены доступа и обновления"""
         user = await authentication_service.verify_user(user_data=user_data, session=session)
 
         if user:
@@ -42,6 +43,7 @@ async def register(name: str = Form(...),
                    registration_service=Depends(get_registration_service),
                    session: AsyncSession = Depends(get_session)
                    ):
+    """ Регистрирует нового пользователя"""
     new_user = UserIn(name=name, email=email, password_hash=password)
 
     return await registration_service.create_new_user(user_in=new_user, session=session)
@@ -53,6 +55,7 @@ async def refresh(
                 authentication_service = Depends(get_authentication_service),
                 session: AsyncSession = Depends(get_session)
                 ):
+    """Обновляет access token с использованием refresh token"""
     if x_refresh_token is None:
         raise HTTPException(status_code=status.HTTP_422_UNPROCESSABLE_ENTITY)
     new_access_token = await authentication_service.verify_refresh_token(refresh_token=x_refresh_token, session=session)

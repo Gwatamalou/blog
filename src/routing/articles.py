@@ -15,6 +15,7 @@ router = APIRouter(tags=["article"])
 async def get_articles(article_service: ArticleService = Depends(get_articles_service),
                        session: AsyncSession = Depends(get_session)
                        ):
+    """Возращает список всех статей"""
     return await article_service.get_articles(session)
 
 
@@ -25,6 +26,7 @@ async def get_article(article_id: int,
                       article_service: ArticleService = Depends(get_articles_service),
                       session: AsyncSession = Depends(get_session)
                       ):
+    """Возращает статью по ID"""
     return await article_service.get_article_by_id(session=session, article_id=article_id)
 
 
@@ -38,6 +40,7 @@ async def create_article(article_in: ArticleCreate,
                          auth_service: AuthenticationService = Depends(get_authentication_service),
                          session: AsyncSession = Depends(get_session)
                      ):
+    """Создает новую статью"""
     return await articles_service.create_article(session=session, article_in=article_in)
 
 
@@ -51,6 +54,7 @@ async def update_article(article_update: ArticleUpdate,
                          articles_service: ArticleService = Depends(get_articles_service),
                          session: AsyncSession = Depends(get_session)
                          ):
+    """Обновляет существующую статью"""
     return await articles_service.update_article(session=session, article_update=article_update,
                                                  article_id=article_update.id)
 
@@ -64,5 +68,6 @@ async def delete_article(article_id: int,
                          auth_service: AuthenticationService = Depends(get_authentication_service),
                          articles_service: ArticleService = Depends(get_articles_service),
                          session: AsyncSession = Depends(get_session)):
+    """Удаляет статью по её ID"""
     await articles_service.delete_article(session=session, article_id=article_id)
     return None
